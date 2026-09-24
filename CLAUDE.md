@@ -4,13 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This repository contains a single self-contained HTML file, `cronograma_pdi_completo.html` — a personal study-schedule tracker (in Brazilian Portuguese) built for one person's PDI (Plano de Desenvolvimento Individual) at "Norte Rios". There is no build system, no package manager, no test suite, and no framework: all HTML, CSS, and JavaScript live inline in this one file.
-
-There is no git repository initialized here and no other source files.
+This repository contains a single self-contained HTML file, `index.html` — a personal study-schedule tracker (in Brazilian Portuguese) built for one person's PDI (Plano de Desenvolvimento Individual) at "Norte Rios". There is no build system, no package manager, no test suite, and no framework: all HTML, CSS, and JavaScript live inline in this one file.
 
 ## Running / developing
 
-There is nothing to build or install. To work on it, just open `cronograma_pdi_completo.html` directly in a browser (double-click, or serve the folder with any static file server). Changes take effect on reload — edit the file and refresh.
+There is nothing to build or install. To work on it, just open `index.html` directly in a browser (double-click, or serve the folder with any static file server). Changes take effect on reload — edit the file and refresh.
 
 There are no linters or automated tests configured. Verify changes manually in a browser: exercise the affected tab(s), check that data persists after reload (via `localStorage`), and check print/export flows if touched.
 
@@ -25,6 +23,12 @@ Everything is in one `<script>` block at the bottom of the file, organized into 
 - **Course reordering**: drag-and-drop (mouse + touch) is hand-rolled in `startDrag`/`onDragMove`/`onDragEnd`, mutating `state.order` (which directly drives round-robin priority in the scheduler).
 - **Import/export**: `exportJson`/`importJsonFile` round-trip the entire `state` object as a JSON backup. `exportIcs` generates an `.ics` calendar file from the session plan. `saveOrFallback` tries a `window.claude.use("downloads")` API first (for the Claude Artifacts runtime) and falls back to a copy-paste modal (`#fallbackModal`) when that's unavailable — this means the file is designed to also work when rendered inside a Claude Artifact, not just as a plain static HTML file.
 - **Theming**: light/dark mode via CSS custom properties in `:root`, respecting `prefers-color-scheme` and an optional `data-theme` attribute override.
+
+## Login gate
+
+`login.html` is a standalone page (its own copy of the design tokens/CSS — nothing is shared with `index.html`) that asks only for an e-mail and checks it against a hardcoded `ALLOWED_EMAILS` array in its inline script. On success it writes `{email, ts}` to `localStorage["norte_rios_pdi_auth_v1"]` and redirects to `index.html`; `index.html` has a tiny synchronous guard script as the very first thing in `<body>` that checks the same key and redirects to `login.html` if it's missing.
+
+This is intentionally **not** a real security boundary — there's no backend, so the allowlist lives in plain sight in the page source. It's just a casual-access filter. Known, accepted tradeoff: the `index.html` guard does not re-check the email against `ALLOWED_EMAILS`, so removing someone from the list doesn't revoke a session they already have saved in their browser. To add or remove an authorized e-mail, edit `ALLOWED_EMAILS` in `login.html`. This mirrors the same pattern already used in the sibling project `painel-pessoal`.
 
 ## Conventions
 
