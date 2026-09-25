@@ -39,6 +39,10 @@
         <div class="txt"><b>Imprimir ou salvar como PDF</b><span>Abre a tela de impressão do navegador.</span></div>
         <button id="btnPrint">Imprimir</button>
       </div>
+      <div class="tool-row">
+        <div class="txt"><b>Sair</b><span>Encerra sua sessão neste navegador. Seus dados continuam salvos; você só precisa entrar com o e-mail de novo.</span></div>
+        <button id="btnLogout">🚪 Sair</button>
+      </div>
     </div>
   </div>
   <input type="file" id="fileImport" accept=".json" style="display:none;">
@@ -172,6 +176,7 @@
   <div class="footer-note">Dados salvos automaticamente neste navegador, conforme você edita.</div>
 </div>
 <div class="toast" id="toast"></div>
+<button class="logout-fab" id="btnLogoutFab" title="Sair do cronograma">🚪 Sair</button>
 
 <div class="modal-bg" id="fallbackModal">
   <div class="modal">

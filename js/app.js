@@ -27,6 +27,11 @@ document.getElementById("btnPrint").addEventListener("click", ()=>window.print()
 document.getElementById("btnImportJson").addEventListener("click", ()=>document.getElementById("fileImport").click());
 document.getElementById("fileImport").addEventListener("change", e=>{ if(e.target.files[0]) importJsonFile(e.target.files[0]); });
 document.getElementById("toolsToggle").addEventListener("click", ()=>document.getElementById("toolsPanel").classList.toggle("show"));
+function confirmLogout(){
+  if(confirm("Sair do cronograma? Seus dados continuam salvos neste navegador.")) logout();
+}
+document.getElementById("btnLogout").addEventListener("click", confirmLogout);
+document.getElementById("btnLogoutFab").addEventListener("click", confirmLogout);
 document.getElementById("sessDate").value = dstr(nextWedFri(new Date()));
 
 populateEixoSelects();

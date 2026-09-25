@@ -89,6 +89,14 @@ textarea{resize:vertical; min-height:38px;}
 .iconbtn{background:none; border:1px solid var(--border); border-radius:6px; cursor:pointer; padding:3px 7px; font-size:.8rem; color:var(--text);}
 .iconbtn:hover{background:var(--light-teal);}
 
+.logout-fab{
+  position:fixed; left:16px; bottom:16px; z-index:70;
+  background:var(--card-bg); color:var(--text); border:1px solid var(--border);
+  padding:10px 16px; border-radius:999px; font-weight:600; font-size:.85rem; cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+}
+.logout-fab:hover{background:var(--light-teal); border-color:var(--teal);}
+
 /* course cards */
 .course-card{
   background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:12px 14px; margin-bottom:10px;
@@ -134,7 +142,7 @@ textarea{resize:vertical; min-height:38px;}
 .modal textarea{height:160px; font-family:monospace; font-size:.75rem;}
 
 @media print{
-  .tools-toggle, .tabs, .btn-primary, .btn-secondary, input, select, .drag-handle{display:none !important;}
+  .tools-toggle, .tabs, .btn-primary, .btn-secondary, input, select, .drag-handle, .logout-fab{display:none !important;}
   .tab-panel{display:block !important;}
   body{background:#fff;}
 }
