@@ -1,0 +1,38 @@
+:root{ --error-bg:#FBEBDD; --error-border:#E68B35; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --error-bg:#3A2E1D; }
+}
+:root[data-theme="dark"]{ --error-bg:#3A2E1D; }
+body{
+  margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px;
+  font-family:Calibri,'Segoe UI',Arial,sans-serif; background:var(--bg); color:var(--text);
+}
+.login-card{
+  background:var(--card-bg); border:1px solid var(--border); border-radius:16px; padding:32px 28px;
+  max-width:380px; width:100%; box-shadow:0 2px 10px rgba(0,0,0,.05); text-align:center;
+}
+.logo-badge{
+  background:#fff; border-radius:14px; padding:9px; width:64px; height:64px; margin:0 auto 14px;
+  display:flex; align-items:center; justify-content:center; box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+.logo-badge svg, .logo-badge img{width:100%; height:100%; display:block;}
+h1{margin:0 0 4px; font-size:1.2rem; color:var(--text);}
+.sub{margin:0 0 24px; font-size:.85rem; color:var(--muted);}
+.field{text-align:left; margin-bottom:16px;}
+label{display:block; font-size:.76rem; color:var(--muted); margin-bottom:5px; font-weight:600;}
+input[type=email]{
+  width:100%; font-family:inherit; font-size:.9rem; padding:9px 11px;
+  border:1px solid var(--border); border-radius:8px; background:var(--card-bg); color:var(--text);
+}
+input[type=email]:focus{outline:2px solid var(--teal); outline-offset:1px;}
+.btn-primary{
+  width:100%; background:var(--dark-green); color:#fff; border:none; padding:10px 18px;
+  border-radius:8px; cursor:pointer; font-weight:600; font-size:.9rem; font-family:inherit;
+}
+.btn-primary:hover{opacity:.9;}
+.error{
+  margin-top:14px; text-align:left; background:var(--error-bg); border:1px solid var(--error-border);
+  border-radius:8px; padding:10px 12px; font-size:.8rem; color:var(--text);
+}
+.error b{color:var(--error-border);}
+.footnote{margin-top:18px; font-size:.72rem; color:var(--muted);}
